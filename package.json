@@ -11,7 +11,6 @@
   "dependencies": {
     "@crossmint/client-sdk-react-ui": "^1.13.1",
     "next": "15.1.4",
-    "pino-pretty": "^13.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -22,6 +21,7 @@
     "@types/react-dom": "^19.0.3",
     "eslint": "^9.18.0",
     "eslint-config-next": "15.1.4",
+    "pino-pretty": "^13.0.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
