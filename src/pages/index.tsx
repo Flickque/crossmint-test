@@ -61,3 +61,8 @@ export default function Home() {
     </div>
   );
 }
+
+export function getServerSideProps() {
+  console.log('hello world');
+  return 'hello world';
+}
