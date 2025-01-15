@@ -20,45 +20,33 @@ function Checkout() {
     }
   }, [order]);
 
+  if (!collectionId) return null;
+
+  console.log(collectionId)
+
   return (
       <CrossmintEmbeddedCheckout
           lineItems={[
             {
               collectionLocator: `crossmint:${collectionId}`,
               callData: {
-                totalPrice: "0.001",
-                quantity: 1,
-              },
-            },
-            {
-              collectionLocator: `crossmint:${collectionId}`,
-              callData: {
-                totalPrice: "0.002",
-                quantity: 2,
+                totalPrice: '1',
+                amount: 1,
+                tokenId: 1,
+                tokenAddress: '0x14196f08a4fa0b66b7331bc40dd6bcd8a1deea9f',
+                data: [1],
               },
             },
           ]}
           payment={{
-            crypto: {
-              enabled: true,
-              defaultChain: "polygon", // Set preferred blockchain
-              defaultCurrency: "matic", // Set preferred crypto
-            },
+            crypto: { enabled: false },
             fiat: {
               enabled: true,
-              defaultCurrency: "usd", // Set preferred fiat currency
-              allowedMethods: {
-                card: true,
-                applePay: true,
-                googlePay: true,
-              },
+              allowedMethods: { applePay: true, googlePay: true },
             },
-            receiptEmail: "receipt@example.com", // Optional: Set receipt email
+            receiptEmail: 'zakhar@lisafoundation.com',
           }}
-          recipient={{
-            email: "buyer@example.com", // NFTs will be delivered to this email's wallet
-            // Or use walletAddress: "0x..." for direct delivery
-          }}
+          recipient={{ walletAddress: '0xEFEE404D58aD7614E894E55DF4E0434Eea985CFA' }}
           locale="en-US" // Set interface language
       />
   );
@@ -68,8 +56,11 @@ function Checkout() {
 export default function Home() {
   const clientApiKey = process.env.NEXT_PUBLIC_CLIENT_API_KEY as string;
 
+  if (!clientApiKey) return null;
+
+  console.log(clientApiKey)
   return (
-      <div className="flex flex-col items-center justify-start min-h-screen p-6">
+      <div className="flex flex-col items-center justify-start h-[640px] min-h-screen p-6 [&>iframe]:!h-full">
         <CrossmintProvider apiKey={clientApiKey}>
           <CrossmintCheckoutProvider>
             <Checkout />
