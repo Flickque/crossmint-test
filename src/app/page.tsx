@@ -18,10 +18,6 @@ function Checkout() {
     }
   }, [order]);
 
-  if (!collectionId) return null;
-
-  console.log(collectionId)
-
   return (
       <CrossmintEmbeddedCheckout
           lineItems={[
@@ -53,9 +49,6 @@ function Checkout() {
 export default function Home() {
   const clientApiKey = process.env.NEXT_PUBLIC_CLIENT_API_KEY as string;
 
-  if (!clientApiKey) return null;
-
-  console.log(clientApiKey)
   return (
       <div className="flex flex-col items-center justify-start h-[640px] min-h-screen p-6 [&>iframe]:!h-full">
         <CrossmintProvider apiKey={clientApiKey}>
