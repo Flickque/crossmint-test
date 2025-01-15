@@ -8,7 +8,6 @@ import {
   useCrossmintCheckout,
 } from "@crossmint/client-sdk-react-ui";
 
-// Component with purchase tracking
 function Checkout() {
   const { order } = useCrossmintCheckout();
   const collectionId = process.env.NEXT_PUBLIC_COLLECTION_ID as string;
@@ -16,7 +15,6 @@ function Checkout() {
   useEffect(() => {
     if (order && order.phase === "completed") {
       console.log("Purchase completed!");
-      // Handle successful purchase
     }
   }, [order]);
 
@@ -52,7 +50,6 @@ function Checkout() {
   );
 }
 
-// Main component with providers
 export default function Home() {
   const clientApiKey = process.env.NEXT_PUBLIC_CLIENT_API_KEY as string;
 
